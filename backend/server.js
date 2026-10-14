@@ -28,4 +28,9 @@ app.get('/',(req,res)=>{
     res.send("API Working")
 })
 
-app.listen(port, ()=> console.log('Server started on PORT : '+ port))
+// Only listen on a port when running locally (not on Vercel)
+if (!process.env.VERCEL) {
+    app.listen(port, ()=>console.log('Server started on PORT : '+ port))
+}
+
+export default app
